@@ -1,0 +1,2449 @@
+{
+  "version": "1.0",
+  "label": "option_a_mvp",
+  "model": "gpt-4o-mini",
+  "golden_set": "evals/golden_reviews.json",
+  "metrics": {
+    "extraction_success_rate": 1.0,
+    "edit_count_parity_rate": 0.9,
+    "modification_type_accuracy": 0.96,
+    "groundedness_per_edit": 0.9722222222222222,
+    "fully_grounded_reviews": 0.96,
+    "totals": {
+      "reviews": 50,
+      "successful_extractions": 50,
+      "predicted_edits_total": 72,
+      "grounded_edits_total": 70
+    }
+  },
+  "failure_buckets": {
+    "ungrounded_find_string": [
+      "GR-007",
+      "GR-040"
+    ],
+    "over_extraction": [
+      "GR-011",
+      "GR-014",
+      "GR-016",
+      "GR-040"
+    ],
+    "wrong_modification_type": [
+      "GR-011",
+      "GR-013"
+    ],
+    "under_extraction": [
+      "GR-048"
+    ]
+  },
+  "per_review": [
+    {
+      "id": "GR-001",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "These cookies are great! I added a teaspoon of cinnamon to the dough and it gave them such a warm flavor. Will make again.",
+      "categories": [
+        "addition"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "addition"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "addition"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding cinnamon enhances the flavor profile of the cookies, giving them a warm taste.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "1 teaspoon baking soda",
+              "replace": null,
+              "add": "1 teaspoon cinnamon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-002",
+      "recipe": "banana_bread",
+      "review_text": "Tossed in a half cup of chopped pecans for crunch. Highly recommend!",
+      "categories": [
+        "addition"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "addition"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "addition"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding chopped pecans enhances the texture and adds a crunchy element to the bread.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "0.75 cup brown sugar",
+              "replace": null,
+              "add": "0.5 cup chopped pecans"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-003",
+      "recipe": "chili",
+      "review_text": "Added a chopped chipotle pepper in adobo for some smokiness. Perfect heat level.",
+      "categories": [
+        "addition"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "addition"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "addition"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "To add smokiness and enhance the flavor profile of the chili.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "1 large onion, chopped",
+              "replace": null,
+              "add": "1 chopped chipotle pepper in adobo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-004",
+      "recipe": "pancakes",
+      "review_text": "I always add a dash of nutmeg to my pancakes. Made them so much better.",
+      "categories": [
+        "addition"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "addition"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "addition"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding nutmeg enhances the flavor of the pancakes.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "1 tablespoon white sugar",
+              "replace": null,
+              "add": "dash of nutmeg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-005",
+      "recipe": "mac_and_cheese",
+      "review_text": "Topped it with buttered panko breadcrumbs before baking. Crunchy top, gooey inside, dream texture.",
+      "categories": [
+        "addition"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "addition"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "addition"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding buttered panko breadcrumbs creates a crunchy top that contrasts with the gooey inside, enhancing the texture.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "add_after",
+              "find": "Combine sauce with macaroni; transfer to a baking dish.",
+              "replace": null,
+              "add": "Top with buttered panko breadcrumbs before baking."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-006",
+      "recipe": "roast_chicken",
+      "review_text": "Stuffed a halved lemon in the cavity along with the garlic. Juicy and lemony, the meat practically falls off the bone.",
+      "categories": [
+        "addition"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "addition"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "addition"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding a halved lemon enhances the flavor and juiciness of the chicken.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "add_after",
+              "find": "Place garlic in the cavity.",
+              "replace": null,
+              "add": "Stuff a halved lemon in the cavity along with the garlic."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-007",
+      "recipe": "apple_cake",
+      "review_text": "Added a cup of raisins, they plump up nicely while baking and add little bursts of sweetness.",
+      "categories": [
+        "addition"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "addition"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "addition"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        false
+      ],
+      "grounded_count": 0,
+      "all_edits_grounded": false,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding raisins enhances the flavor with bursts of sweetness.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "2 large apples, peeled and diced",
+              "replace": null,
+              "add": "1 cup raisins"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-008",
+      "recipe": "marinara_sauce",
+      "review_text": "Tossed in a half teaspoon of red pepper flakes for a little heat. Just right.",
+      "categories": [
+        "addition"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "addition"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "addition"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "The addition of red pepper flakes enhances the flavor by adding heat.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "1 teaspoon dried oregano",
+              "replace": null,
+              "add": "0.5 teaspoon red pepper flakes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-009",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Skipped the walnuts because my kids hate nuts. Cookies were still amazing.",
+      "categories": [
+        "removal"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "removal"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "removal"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "removal",
+          "reasoning": "Skipped the walnuts because my kids hate nuts.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "remove",
+              "find": "1 cup chopped walnuts",
+              "replace": null,
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-010",
+      "recipe": "banana_bread",
+      "review_text": "Left out the salt, honestly didn't notice a difference.",
+      "categories": [
+        "removal"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "removal"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "removal"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "removal",
+          "reasoning": "Left out the salt and didn't notice a difference, suggesting it may not be essential for flavor.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "remove",
+              "find": "0.25 teaspoon salt",
+              "replace": null,
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-011",
+      "recipe": "chili",
+      "review_text": "No kidney beans for me, I prefer just the black beans. Still hearty.",
+      "categories": [
+        "removal"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "removal"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 2,
+      "count_parity": false,
+      "count_delta": 1,
+      "type_accurate": false,
+      "grounded_per_edit": [
+        true,
+        true
+      ],
+      "grounded_count": 2,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "The user prefers black beans over kidney beans for personal taste.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "remove",
+              "find": "1 (15 ounce) can kidney beans, drained",
+              "replace": null,
+              "add": null
+            },
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "1 (15 ounce) can black beans, drained",
+              "replace": null,
+              "add": "1 (15 ounce) can black beans, drained"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-012",
+      "recipe": "pancakes",
+      "review_text": "Didn't have vanilla on hand so I just omitted it. Still delicious.",
+      "categories": [
+        "removal"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "removal"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "removal"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "removal",
+          "reasoning": "The user did not have vanilla on hand, so they omitted it from the recipe.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "remove",
+              "find": "1 teaspoon vanilla extract",
+              "replace": null,
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-013",
+      "recipe": "mac_and_cheese",
+      "review_text": "Skipped the Dijon mustard, my husband doesn't like it. Just as good without.",
+      "categories": [
+        "removal"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "removal"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": false,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "My husband doesn't like Dijon mustard, so I skipped it.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "remove",
+              "find": "1 teaspoon Dijon mustard",
+              "replace": null,
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-014",
+      "recipe": "roast_chicken",
+      "review_text": "Don't like thyme so I left it out. Garlic carried plenty of flavor on its own.",
+      "categories": [
+        "removal"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "removal"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "removal"
+      ],
+      "predicted_edit_count": 2,
+      "count_parity": false,
+      "count_delta": 1,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true
+      ],
+      "grounded_count": 2,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "removal",
+          "reasoning": "The reviewer does not like thyme and believes it is unnecessary since garlic provides enough flavor.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "remove",
+              "find": "1 teaspoon dried thyme",
+              "replace": null,
+              "add": null
+            },
+            {
+              "target": "instructions",
+              "operation": "remove",
+              "find": "Sprinkle salt, pepper, and thyme over the chicken.",
+              "replace": null,
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-015",
+      "recipe": "apple_cake",
+      "review_text": "I omitted the vanilla extract, didn't feel needed with all that cinnamon.",
+      "categories": [
+        "removal"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "removal"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "removal"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "removal",
+          "reasoning": "The reviewer felt the vanilla extract was unnecessary due to the strong flavor of cinnamon.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "remove",
+              "find": "1 teaspoon vanilla extract",
+              "replace": null,
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-016",
+      "recipe": "marinara_sauce",
+      "review_text": "My partner is allergic to garlic so I left it out entirely. Still tasty with the herbs.",
+      "categories": [
+        "removal"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "removal"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "removal"
+      ],
+      "predicted_edit_count": 2,
+      "count_parity": false,
+      "count_delta": 1,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true
+      ],
+      "grounded_count": 2,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "removal",
+          "reasoning": "The user removed garlic due to an allergy, which makes the dish safe for their partner.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "remove",
+              "find": "4 cloves garlic, minced",
+              "replace": null,
+              "add": null
+            },
+            {
+              "target": "instructions",
+              "operation": "remove",
+              "find": "Add garlic and cook for 1 minute until fragrant.",
+              "replace": null,
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-017",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Swapped butter for coconut oil to make these dairy-free. Came out great, slightly different chew but excellent.",
+      "categories": [
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Swapping butter for coconut oil makes the cookies dairy-free.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1 cup butter, softened",
+              "replace": "1 cup coconut oil, softened",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-018",
+      "recipe": "banana_bread",
+      "review_text": "Used almond flour instead of all-purpose to make it gluten-free.",
+      "categories": [
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Used almond flour instead of all-purpose to make it gluten-free.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 cups all-purpose flour",
+              "replace": "2 cups almond flour",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-019",
+      "recipe": "chili",
+      "review_text": "Subbed ground turkey for the beef to lighten it up. My family didn't even notice.",
+      "categories": [
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Substituting ground turkey for beef lightens the dish, making it healthier without sacrificing flavor.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 pounds ground beef",
+              "replace": "2 pounds ground turkey",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-020",
+      "recipe": "pancakes",
+      "review_text": "Used oat milk instead of regular milk, worked beautifully and stayed fluffy.",
+      "categories": [
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Using oat milk instead of regular milk keeps the pancakes fluffy and caters to dietary preferences.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1.25 cups milk",
+              "replace": "1.25 cups oat milk",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-021",
+      "recipe": "mac_and_cheese",
+      "review_text": "Swapped the sharp cheddar for gruyere. So much more flavor, will never go back.",
+      "categories": [
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Gruyere cheese adds more flavor compared to sharp cheddar.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "3 cups shredded sharp cheddar cheese",
+              "replace": "3 cups shredded gruyere cheese",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-022",
+      "recipe": "roast_chicken",
+      "review_text": "Rubbed with olive oil instead of butter for a crispier skin. Perfect golden brown.",
+      "categories": [
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Using olive oil instead of butter results in a crispier skin.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 tablespoons butter, softened",
+              "replace": "2 tablespoons olive oil",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-023",
+      "recipe": "apple_cake",
+      "review_text": "Used pears instead of apples since that's what I had on hand. Lovely flavor.",
+      "categories": [
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Used pears instead of apples since that's what I had on hand.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "3 large apples, peeled and diced",
+              "replace": "3 large pears, peeled and diced",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-024",
+      "recipe": "marinara_sauce",
+      "review_text": "Used crushed tomatoes instead of diced for a smoother sauce. Much better texture.",
+      "categories": [
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Used crushed tomatoes instead of diced for a smoother sauce. Much better texture.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1 (28 ounce) can diced tomatoes",
+              "replace": "1 (28 ounce) can crushed tomatoes",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-025",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Used a full teaspoon of salt instead of a half. Way better flavor balance.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Using a full teaspoon of salt improves the flavor balance of the cookies.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "0.5 teaspoon salt",
+              "replace": "1 teaspoon salt",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-026",
+      "recipe": "banana_bread",
+      "review_text": "Doubled the brown sugar because we like it sweeter.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Doubling the brown sugar makes the bread sweeter, which is preferred by the reviewer.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "0.75 cup brown sugar",
+              "replace": "1.5 cups brown sugar",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-027",
+      "recipe": "chili",
+      "review_text": "Halved the chili powder, the original was too spicy for my husband.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Halving the chili powder made the dish less spicy, which was necessary for my husband's taste.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 tablespoons chili powder",
+              "replace": "1 tablespoon chili powder",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-028",
+      "recipe": "pancakes",
+      "review_text": "Used 1.5 cups of milk for a thinner, crepe-like batter. Lovely.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Used more milk for a thinner, crepe-like batter.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1.25 cups milk",
+              "replace": "1.5 cups milk",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-029",
+      "recipe": "mac_and_cheese",
+      "review_text": "Cut the butter in half, it really doesn't need a full half cup. Still creamy.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Halving the butter reduces richness while maintaining creaminess.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "0.5 cup butter",
+              "replace": "0.25 cup butter",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-030",
+      "recipe": "roast_chicken",
+      "review_text": "Doubled the garlic, six cloves all the way.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Doubling the garlic enhances the flavor and aroma of the dish.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "3 cloves garlic, minced",
+              "replace": "6 cloves garlic, minced",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-031",
+      "recipe": "apple_cake",
+      "review_text": "Used 1 cup of sugar instead of 2. Plenty sweet from the apples.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Halving the sugar allows the natural sweetness of the apples to shine through without making the cake overly sweet.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 cups white sugar",
+              "replace": "1 cup white sugar",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-032",
+      "recipe": "marinara_sauce",
+      "review_text": "Tripled the basil, fresh herbs really make this sauce sing.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Tripling the basil enhances the flavor of the sauce with fresh herbs.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1 teaspoon dried basil",
+              "replace": "3 teaspoons dried basil",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-033",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Baked for 8 minutes instead of 10. Edges crispy, centers soft and chewy. Perfection.",
+      "categories": [
+        "technique_change"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "technique_change"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Baking for a shorter time resulted in crispy edges and soft, chewy centers, which the reviewer preferred.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "about 10 minutes.",
+              "replace": "about 8 minutes.",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-034",
+      "recipe": "banana_bread",
+      "review_text": "Baked an extra 15 minutes, mine wasn't done at 65. Toothpick rule!",
+      "categories": [
+        "technique_change"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "technique_change"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "technique_change",
+          "reasoning": "The original baking time was insufficient for the bread to cook through.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Bake in preheated oven for 60 to 65 minutes, until a toothpick inserted into center comes out clean.",
+              "replace": "Bake in preheated oven for 75 to 80 minutes, until a toothpick inserted into center comes out clean.",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-035",
+      "recipe": "chili",
+      "review_text": "Simmered uncovered for 3 hours instead of 1. Way more depth of flavor, worth the wait.",
+      "categories": [
+        "technique_change"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "technique_change"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Simmering for a longer time enhances the depth of flavor.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Reduce heat and simmer uncovered for 1 hour, stirring occasionally.",
+              "replace": "Reduce heat and simmer uncovered for 3 hours, stirring occasionally.",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-036",
+      "recipe": "roast_chicken",
+      "review_text": "Roasted for 1 hour and 30 minutes instead of 1:15. My bird was a bit bigger and needed the extra time.",
+      "categories": [
+        "technique_change"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "technique_change"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "technique_change",
+          "reasoning": "The chicken was larger and needed extra cooking time to ensure it was fully cooked.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Roast in preheated oven for 1 hour and 15 minutes.",
+              "replace": "Roast in preheated oven for 1 hour and 30 minutes.",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-037",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Baked at 375 instead of 350. Crispier edges, just how we like them.",
+      "categories": [
+        "technique_change"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "technique_change"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Baking at a higher temperature resulted in crispier edges, which is preferred.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Preheat the oven to 350 degrees F (175 degrees C).",
+              "replace": "Preheat the oven to 375 degrees F (190 degrees C).",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-038",
+      "recipe": "banana_bread",
+      "review_text": "Lowered the oven to 325 for a moister loaf. Game changer, never going back.",
+      "categories": [
+        "technique_change"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "technique_change"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Lowering the oven temperature results in a moister loaf.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Preheat oven to 350 degrees F (175 degrees C).",
+              "replace": "Preheat oven to 325 degrees F (165 degrees C).",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-039",
+      "recipe": "mac_and_cheese",
+      "review_text": "Baked at 400 instead of 350 for a browner, crispier top. Loved it.",
+      "categories": [
+        "technique_change"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "technique_change"
+      ],
+      "predicted_edit_count": 1,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true
+      ],
+      "grounded_count": 1,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Baking at a higher temperature results in a browner, crispier top.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Preheat oven to 350 degrees F.",
+              "replace": "Preheat oven to 400 degrees F.",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-040",
+      "recipe": "roast_chicken",
+      "review_text": "Roasted at 425 instead of 375. Crispier skin, juicier inside.",
+      "categories": [
+        "technique_change"
+      ],
+      "expected_edit_count": 1,
+      "expected_types": [
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 1,
+      "predicted_types": [
+        "technique_change"
+      ],
+      "predicted_edit_count": 3,
+      "count_parity": false,
+      "count_delta": 2,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true,
+        false
+      ],
+      "grounded_count": 2,
+      "all_edits_grounded": false,
+      "predicted_modifications": [
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Roasting at a higher temperature results in crispier skin and a juicier inside.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Preheat oven to 375 degrees F (190 degrees C).",
+              "replace": "Preheat oven to 425 degrees F.",
+              "add": null
+            },
+            {
+              "target": "instructions",
+              "operation": "remove",
+              "find": "Roast in preheated oven for 1 hour and 15 minutes.",
+              "replace": null,
+              "add": null
+            },
+            {
+              "target": "instructions",
+              "operation": "add_after",
+              "find": "Preheat oven to 425 degrees F.",
+              "replace": null,
+              "add": "Roast in preheated oven for 1 hour."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-041",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Halved the white sugar and used 1.5 cups of brown sugar instead. So much chewier and more flavorful.",
+      "categories": [
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 2,
+      "expected_types": [
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 2,
+      "predicted_types": [
+        "ingredient_substitution",
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 2,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true
+      ],
+      "grounded_count": 2,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Halving the white sugar makes the cookies chewier and enhances the overall flavor.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1 cup white sugar",
+              "replace": "0.5 cup white sugar",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Using more brown sugar adds moisture and flavor, contributing to a chewier texture.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1 cup packed brown sugar",
+              "replace": "1.5 cups packed brown sugar",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-042",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Added an extra egg yolk for chewiness AND used 3 cups of chocolate chips instead of 2. Best cookies ever.",
+      "categories": [
+        "addition",
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 2,
+      "expected_types": [
+        "addition",
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 2,
+      "predicted_types": [
+        "addition",
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 2,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true
+      ],
+      "grounded_count": 2,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding an extra egg yolk increases chewiness in the cookies.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "2 eggs",
+              "replace": null,
+              "add": "1 egg yolk"
+            }
+          ]
+        },
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Using more chocolate chips enhances the chocolate flavor and richness of the cookies.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 cups semisweet chocolate chips",
+              "replace": "3 cups semisweet chocolate chips",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-043",
+      "recipe": "banana_bread",
+      "review_text": "Used 3 cups of mashed bananas, added a half cup of chopped walnuts, and cut the brown sugar to 0.5 cup. Best banana bread I've made.",
+      "categories": [
+        "quantity_adjustment",
+        "addition"
+      ],
+      "expected_edit_count": 3,
+      "expected_types": [
+        "addition",
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 3,
+      "predicted_types": [
+        "addition",
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 3,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true,
+        true
+      ],
+      "grounded_count": 3,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Increased the amount of bananas for a richer banana flavor.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2.33 cups mashed overripe bananas",
+              "replace": "3 cups mashed overripe bananas",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "addition",
+          "reasoning": "Added walnuts for extra texture and flavor.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "2.33 cups mashed overripe bananas",
+              "replace": null,
+              "add": "0.5 cup chopped walnuts"
+            }
+          ]
+        },
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Reduced the sugar to balance sweetness with the added bananas.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "0.75 cup brown sugar",
+              "replace": "0.5 cup brown sugar",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-044",
+      "recipe": "chili",
+      "review_text": "Swapped the beef for ground turkey and added a can of corn. Big hit with the kids.",
+      "categories": [
+        "ingredient_substitution",
+        "addition"
+      ],
+      "expected_edit_count": 2,
+      "expected_types": [
+        "addition",
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 2,
+      "predicted_types": [
+        "addition",
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 2,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true
+      ],
+      "grounded_count": 2,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Ground turkey is a leaner alternative to ground beef, making the dish healthier.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 pounds ground beef",
+              "replace": "2 pounds ground turkey",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding corn enhances the flavor and adds sweetness, making it more appealing to kids.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "1 teaspoon salt",
+              "replace": null,
+              "add": "1 (15 ounce) can corn, drained"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-045",
+      "recipe": "pancakes",
+      "review_text": "Used buttermilk instead of regular milk and added an extra tablespoon of melted butter. So fluffy and rich.",
+      "categories": [
+        "ingredient_substitution",
+        "quantity_adjustment"
+      ],
+      "expected_edit_count": 2,
+      "expected_types": [
+        "ingredient_substitution",
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 2,
+      "predicted_types": [
+        "ingredient_substitution",
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 2,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true
+      ],
+      "grounded_count": 2,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Using buttermilk instead of regular milk adds richness and acidity, resulting in fluffier pancakes.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1.25 cups milk",
+              "replace": "1.25 cups buttermilk",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Adding an extra tablespoon of melted butter enhances the flavor and richness of the pancakes.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "3 tablespoons melted butter",
+              "replace": "4 tablespoons melted butter",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-046",
+      "recipe": "mac_and_cheese",
+      "review_text": "Doubled the cheese, swapped cheddar for gruyere, and topped with panko before baking. Unreal.",
+      "categories": [
+        "quantity_adjustment",
+        "ingredient_substitution",
+        "addition"
+      ],
+      "expected_edit_count": 3,
+      "expected_types": [
+        "addition",
+        "ingredient_substitution",
+        "quantity_adjustment"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 3,
+      "predicted_types": [
+        "addition",
+        "ingredient_substitution",
+        "quantity_adjustment"
+      ],
+      "predicted_edit_count": 3,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true,
+        true
+      ],
+      "grounded_count": 3,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Doubling the cheese enhances the flavor and creaminess of the dish.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "3 cups shredded sharp cheddar cheese",
+              "replace": "6 cups shredded sharp cheddar cheese",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Swapping cheddar for gruyere adds a different flavor profile that can elevate the dish.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "3 cups shredded sharp cheddar cheese",
+              "replace": "6 cups shredded gruyere cheese",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "addition",
+          "reasoning": "Topping with panko adds a crunchy texture that contrasts nicely with the creamy mac and cheese.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "add_after",
+              "find": "Combine sauce with macaroni; transfer to a baking dish.",
+              "replace": null,
+              "add": "Top with panko before baking."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-047",
+      "recipe": "roast_chicken",
+      "review_text": "Stuffed the cavity with a halved lemon and a few sprigs of fresh rosemary, brushed with olive oil instead of butter, and roasted at 425 instead of 375. Best roast chicken I've made.",
+      "categories": [
+        "addition",
+        "ingredient_substitution",
+        "technique_change"
+      ],
+      "expected_edit_count": 4,
+      "expected_types": [
+        "addition",
+        "ingredient_substitution",
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 3,
+      "predicted_types": [
+        "addition",
+        "ingredient_substitution",
+        "technique_change"
+      ],
+      "predicted_edit_count": 4,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "grounded_count": 4,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Brushing with olive oil instead of butter adds a different flavor and can be healthier.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 tablespoons butter, softened",
+              "replace": "2 tablespoons olive oil",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "addition",
+          "reasoning": "Stuffing the cavity with lemon and rosemary enhances the flavor of the chicken.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "3 cloves garlic, minced",
+              "replace": null,
+              "add": "1 halved lemon, a few sprigs of fresh rosemary"
+            }
+          ]
+        },
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Roasting at a higher temperature can result in a crispier skin and faster cooking.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Preheat oven to 375 degrees F (190 degrees C).",
+              "replace": "Preheat oven to 425 degrees F (220 degrees C).",
+              "add": null
+            },
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Roast in preheated oven for 1 hour and 15 minutes.",
+              "replace": "Roast in preheated oven for approximately 1 hour.",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-048",
+      "recipe": "apple_cake",
+      "review_text": "Halved the sugar, doubled the cinnamon, baked at 325 for an extra 15 minutes. Best apple cake we've ever had.",
+      "categories": [
+        "quantity_adjustment",
+        "technique_change"
+      ],
+      "expected_edit_count": 4,
+      "expected_types": [
+        "quantity_adjustment",
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 3,
+      "predicted_types": [
+        "quantity_adjustment",
+        "technique_change"
+      ],
+      "predicted_edit_count": 3,
+      "count_parity": false,
+      "count_delta": -1,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true,
+        true
+      ],
+      "grounded_count": 3,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Halving the sugar reduces sweetness, making the cake more balanced.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 cups white sugar",
+              "replace": "1 cup white sugar",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "quantity_adjustment",
+          "reasoning": "Doubling the cinnamon enhances the flavor profile of the cake.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1 teaspoon ground cinnamon",
+              "replace": "2 teaspoons ground cinnamon",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Baking at a lower temperature for a longer time can improve texture and prevent over-browning.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "Bake for 45 minutes.",
+              "replace": "Bake for 60 minutes at 325 degrees F.",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-049",
+      "recipe": "marinara_sauce",
+      "review_text": "Used fresh basil instead of dried, added a teaspoon of sugar to balance acidity, and simmered for 2 hours instead of 30 minutes. Tastes like nonna made it.",
+      "categories": [
+        "ingredient_substitution",
+        "addition",
+        "technique_change"
+      ],
+      "expected_edit_count": 3,
+      "expected_types": [
+        "addition",
+        "ingredient_substitution",
+        "technique_change"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 3,
+      "predicted_types": [
+        "addition",
+        "ingredient_substitution",
+        "technique_change"
+      ],
+      "predicted_edit_count": 3,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true,
+        true
+      ],
+      "grounded_count": 3,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Using fresh basil enhances the flavor compared to dried basil.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1 teaspoon dried basil",
+              "replace": "1 teaspoon fresh basil",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding sugar balances the acidity of the tomatoes, improving the overall taste.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "1 teaspoon dried oregano",
+              "replace": null,
+              "add": "1 teaspoon sugar"
+            }
+          ]
+        },
+        {
+          "modification_type": "technique_change",
+          "reasoning": "Simmering for a longer time allows the flavors to meld better, resulting in a richer sauce.",
+          "edits": [
+            {
+              "target": "instructions",
+              "operation": "replace",
+              "find": "simmer for 30 minutes",
+              "replace": "simmer for 2 hours",
+              "add": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GR-050",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Added an extra egg yolk for chewiness, replaced the white sugar with another cup of brown sugar (so 2 cups brown total), and used half chocolate chips and half chocolate chunks. Insanely good.",
+      "categories": [
+        "addition",
+        "ingredient_substitution"
+      ],
+      "expected_edit_count": 3,
+      "expected_types": [
+        "addition",
+        "ingredient_substitution"
+      ],
+      "success": true,
+      "error": null,
+      "predicted_modification_count": 3,
+      "predicted_types": [
+        "addition",
+        "ingredient_substitution"
+      ],
+      "predicted_edit_count": 3,
+      "count_parity": true,
+      "count_delta": 0,
+      "type_accurate": true,
+      "grounded_per_edit": [
+        true,
+        true,
+        true
+      ],
+      "grounded_count": 3,
+      "all_edits_grounded": true,
+      "predicted_modifications": [
+        {
+          "modification_type": "addition",
+          "reasoning": "Adding an extra egg yolk increases chewiness in the cookies.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "add_after",
+              "find": "2 eggs",
+              "replace": null,
+              "add": "1 egg yolk"
+            }
+          ]
+        },
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Replacing white sugar with brown sugar enhances the flavor and moisture of the cookies.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "1 cup white sugar",
+              "replace": "2 cups packed brown sugar",
+              "add": null
+            }
+          ]
+        },
+        {
+          "modification_type": "ingredient_substitution",
+          "reasoning": "Using half chocolate chips and half chocolate chunks adds variety in texture and flavor.",
+          "edits": [
+            {
+              "target": "ingredients",
+              "operation": "replace",
+              "find": "2 cups semisweet chocolate chips",
+              "replace": "1 cup semisweet chocolate chips and 1 cup chocolate chunks",
+              "add": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

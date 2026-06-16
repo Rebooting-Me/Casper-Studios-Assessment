@@ -8,7 +8,7 @@ ModificationObject instances.
 
 import json
 import os
-from typing import Optional
+from typing import List, Optional
 
 from loguru import logger
 from openai import OpenAI
@@ -38,9 +38,12 @@ class TweakExtractor:
         review: Review,
         recipe: Recipe,
         max_retries: int = 2,
-    ) -> Optional[ModificationObject]:
+    ) -> List[ModificationObject]:
         """
-        Extract a structured modification from a review.
+        Extract structured modifications from a review.
+
+        A single review can describe multiple distinct modifications.
+        Returns a list (possibly empty) of ModificationObjects.
 
         Args:
             review: Review object containing modification text
@@ -48,20 +51,23 @@ class TweakExtractor:
             max_retries: Number of retry attempts if parsing fails
 
         Returns:
-            ModificationObject if extraction successful, None otherwise
+            List of ModificationObjects (empty if review has no flag,
+            extraction fails, or LLM returns no modifications)
         """
         if not review.has_modification:
             logger.warning("Review has no modification flag set")
-            return None
+            return []
 
-        # Build the prompt - use simple prompt to avoid format string issues
         prompt = build_simple_prompt(
             review.text, recipe.title, recipe.ingredients, recipe.instructions
         )
 
         logger.debug(
-            "Extracting modification from review: {}...".format(review.text[:100])
+            "Extracting modifications from review: {}...".format(review.text[:100])
         )
+
+        raw_output = None
+        data = None
 
         for attempt in range(max_retries + 1):
             try:
@@ -69,27 +75,26 @@ class TweakExtractor:
                     model=self.model,
                     messages=[{"role": "user", "content": prompt}],
                     response_format={"type": "json_object"},
-                    temperature=0.1,  # Low temperature for consistent extractions
-                    max_tokens=1000,
+                    temperature=0.1,
+                    max_tokens=1500,
                 )
 
                 raw_output = response.choices[0].message.content
                 logger.debug(f"LLM raw output: {raw_output}")
 
-                # Check if we got a response
                 if not raw_output:
                     logger.warning(f"Attempt {attempt + 1}: Empty response from LLM")
                     continue
 
-                # Parse and validate the JSON response
-                modification_data = json.loads(raw_output)
-                modification = ModificationObject(**modification_data)
+                data = json.loads(raw_output)
+                modifications_data = data.get("modifications", [])
+                modifications = [ModificationObject(**m) for m in modifications_data]
 
                 logger.info(
-                    f"Successfully extracted {modification.modification_type} "
-                    f"modification with {len(modification.edits)} edits"
+                    f"Successfully extracted {len(modifications)} modification(s) "
+                    f"with {sum(len(m.edits) for m in modifications)} total edits"
                 )
-                return modification
+                return modifications
 
             except json.JSONDecodeError as e:
                 logger.warning(f"Attempt {attempt + 1}: Failed to parse JSON: {e}")
@@ -99,64 +104,55 @@ class TweakExtractor:
             except ValidationError as e:
                 logger.warning(f"Attempt {attempt + 1}: Validation error: {e}")
                 if attempt == max_retries:
-                    logger.error(
-                        f"Max retries reached. Invalid data: {modification_data}"
-                    )
+                    logger.error(f"Max retries reached. Invalid data: {data}")
 
             except Exception as e:
                 logger.error(f"Attempt {attempt + 1}: Unexpected error: {e}")
                 if attempt == max_retries:
-                    return None
+                    return []
 
-        return None
+        return []
 
     def extract_single_modification(
         self, reviews: list[Review], recipe: Recipe
-    ) -> tuple[ModificationObject, Review] | tuple[None, None]:
+    ) -> tuple[List[ModificationObject], Optional[Review]]:
         """
-        Extract modification from a single randomly selected review.
+        Extract modifications from a single randomly selected review.
 
         Args:
             reviews: List of reviews to choose from
             recipe: Original recipe being modified
 
         Returns:
-            Tuple of (ModificationObject, source_Review) if successful, (None, None) otherwise
+            Tuple of (modifications_list, source_Review).
+            Returns ([], None) if no eligible reviews or extraction fails.
         """
         import random
 
-        # Filter to reviews with modifications
         modification_reviews = [r for r in reviews if r.has_modification]
 
         if not modification_reviews:
             logger.warning("No reviews with modifications found")
-            return None, None
+            return [], None
 
-        # Select one random review
         selected_review = random.choice(modification_reviews)
         logger.info(f"Selected review: {selected_review.text[:100]}...")
 
-        modification = self.extract_modification(selected_review, recipe)
-        if modification:
-            logger.info("Successfully extracted modification from selected review")
-            return modification, selected_review
+        modifications = self.extract_modification(selected_review, recipe)
+        if modifications:
+            logger.info(
+                f"Successfully extracted {len(modifications)} modification(s) "
+                f"from selected review"
+            )
+            return modifications, selected_review
         else:
-            logger.warning("Failed to extract modification from selected review")
-            return None, None
+            logger.warning("Failed to extract any modifications from selected review")
+            return [], None
 
     def test_extraction(
         self, review_text: str, recipe_data: dict
-    ) -> Optional[ModificationObject]:
-        """
-        Test extraction with raw text and recipe data.
-
-        Args:
-            review_text: Raw review text
-            recipe_data: Raw recipe dictionary
-
-        Returns:
-            ModificationObject if successful
-        """
+    ) -> List[ModificationObject]:
+        """Test extraction with raw text and recipe data."""
         review = Review(text=review_text, has_modification=True)
         recipe = Recipe(
             recipe_id=recipe_data.get("recipe_id", "test"),
