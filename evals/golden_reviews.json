@@ -1,0 +1,696 @@
+{
+  "version": "1.0",
+  "description": "Golden set: 50 hand-labeled (review -> expected edits) fixtures for Layer 1 (extraction) of the recipe enhancement eval. Each review is anchored to a concrete recipe so deterministic groundedness checks can run without external lookups.",
+  "matcher_notes": {
+    "edit_match_key": "(modification_type, target, operation, normalized(replace|add)) with token-set similarity >= 0.7",
+    "find_anchor_lenient": "For add_after operations, the find anchor may be any line; primary match is on the added content.",
+    "quantity_normalization": "'0.5' == '1/2' == 'half'; case-insensitive; whitespace collapsed.",
+    "multi_intent_on_same_line": "When a single user statement modifies multiple aspects of one line (e.g. 'doubled the cheese and used gruyere instead'), edits are expressed as separate atomic operations sharing the same find. Matcher should treat the modification as satisfied if the final line reflects all intents."
+  },
+  "recipes": {
+    "chocolate_chip_cookies": {
+      "ingredients": [
+        "1 cup butter, softened",
+        "1 cup white sugar",
+        "1 cup packed brown sugar",
+        "2 eggs",
+        "2 teaspoons vanilla extract",
+        "1 teaspoon baking soda",
+        "2 teaspoons hot water",
+        "0.5 teaspoon salt",
+        "3 cups all-purpose flour",
+        "2 cups semisweet chocolate chips",
+        "1 cup chopped walnuts"
+      ],
+      "instructions": [
+        "Preheat the oven to 350 degrees F (175 degrees C).",
+        "Beat butter, white sugar, and brown sugar with an electric mixer in a large bowl until smooth.",
+        "Beat in eggs, one at a time, then stir in vanilla.",
+        "Dissolve baking soda in hot water. Add to batter along with salt.",
+        "Stir in flour, chocolate chips, and walnuts.",
+        "Drop spoonfuls of dough 2 inches apart onto ungreased baking sheets.",
+        "Bake in the preheated oven until edges are nicely browned, about 10 minutes."
+      ]
+    },
+    "banana_bread": {
+      "ingredients": [
+        "2 cups all-purpose flour",
+        "1 teaspoon baking soda",
+        "0.25 teaspoon salt",
+        "0.5 cup butter, softened",
+        "0.75 cup brown sugar",
+        "2 eggs, beaten",
+        "2.33 cups mashed overripe bananas",
+        "1 teaspoon vanilla extract"
+      ],
+      "instructions": [
+        "Preheat oven to 350 degrees F (175 degrees C). Lightly grease a 9x5 inch loaf pan.",
+        "In a large bowl, combine flour, baking soda, and salt.",
+        "In a separate bowl, cream together butter and brown sugar.",
+        "Stir in eggs and mashed bananas until well blended.",
+        "Stir banana mixture into flour mixture; stir just to moisten.",
+        "Pour batter into prepared loaf pan.",
+        "Bake in preheated oven for 60 to 65 minutes, until a toothpick inserted into center comes out clean."
+      ]
+    },
+    "chili": {
+      "ingredients": [
+        "2 pounds ground beef",
+        "1 large onion, chopped",
+        "3 cloves garlic, minced",
+        "2 tablespoons chili powder",
+        "1 teaspoon ground cumin",
+        "1 (28 ounce) can crushed tomatoes",
+        "1 (15 ounce) can kidney beans, drained",
+        "1 (15 ounce) can black beans, drained",
+        "1 teaspoon salt"
+      ],
+      "instructions": [
+        "Heat a large pot over medium-high heat.",
+        "Add ground beef and brown, breaking it up, about 8 minutes.",
+        "Add onion and garlic; cook 3 minutes until softened.",
+        "Stir in chili powder, cumin, and salt.",
+        "Add crushed tomatoes and beans; bring to a simmer.",
+        "Reduce heat and simmer uncovered for 1 hour, stirring occasionally."
+      ]
+    },
+    "roast_chicken": {
+      "ingredients": [
+        "1 (4 pound) whole chicken",
+        "2 tablespoons butter, softened",
+        "1 teaspoon salt",
+        "0.5 teaspoon black pepper",
+        "1 teaspoon dried thyme",
+        "3 cloves garlic, minced"
+      ],
+      "instructions": [
+        "Preheat oven to 375 degrees F (190 degrees C).",
+        "Rub chicken with softened butter.",
+        "Sprinkle salt, pepper, and thyme over the chicken.",
+        "Place garlic in the cavity.",
+        "Roast in preheated oven for 1 hour and 15 minutes."
+      ]
+    },
+    "mac_and_cheese": {
+      "ingredients": [
+        "1 pound elbow macaroni",
+        "0.5 cup butter",
+        "0.5 cup all-purpose flour",
+        "4 cups whole milk",
+        "1 teaspoon Dijon mustard",
+        "3 cups shredded sharp cheddar cheese",
+        "1 teaspoon salt"
+      ],
+      "instructions": [
+        "Preheat oven to 350 degrees F.",
+        "Cook macaroni according to package directions; drain.",
+        "Melt butter in a saucepan over medium heat.",
+        "Whisk in flour and cook 1 minute.",
+        "Gradually whisk in milk; cook until thickened.",
+        "Stir in mustard and cheddar until melted.",
+        "Combine sauce with macaroni; transfer to a baking dish.",
+        "Bake 25 minutes until bubbly."
+      ]
+    },
+    "pancakes": {
+      "ingredients": [
+        "1.5 cups all-purpose flour",
+        "3.5 teaspoons baking powder",
+        "1 teaspoon salt",
+        "1 tablespoon white sugar",
+        "1.25 cups milk",
+        "1 egg",
+        "3 tablespoons melted butter",
+        "1 teaspoon vanilla extract"
+      ],
+      "instructions": [
+        "Sift together flour, baking powder, salt, and sugar in a large bowl.",
+        "Make a well in the center; pour in milk, egg, butter, and vanilla.",
+        "Mix until smooth.",
+        "Heat a lightly oiled griddle over medium-high heat.",
+        "Pour batter onto griddle, using approximately 1/4 cup per pancake.",
+        "Brown on both sides and serve hot."
+      ]
+    },
+    "apple_cake": {
+      "ingredients": [
+        "2 cups all-purpose flour",
+        "2 cups white sugar",
+        "1 teaspoon baking soda",
+        "1 teaspoon ground cinnamon",
+        "0.5 teaspoon salt",
+        "3 large apples, peeled and diced",
+        "2 eggs",
+        "0.5 cup vegetable oil",
+        "1 teaspoon vanilla extract"
+      ],
+      "instructions": [
+        "Preheat oven to 350 degrees F (175 degrees C). Grease a 9x13 inch pan.",
+        "In a large bowl, mix flour, sugar, baking soda, cinnamon, and salt.",
+        "In another bowl, beat eggs with oil and vanilla.",
+        "Stir wet ingredients into dry until just combined.",
+        "Fold in the apples.",
+        "Pour batter into prepared pan.",
+        "Bake for 45 minutes."
+      ]
+    },
+    "marinara_sauce": {
+      "ingredients": [
+        "2 tablespoons olive oil",
+        "4 cloves garlic, minced",
+        "1 (28 ounce) can diced tomatoes",
+        "1 teaspoon dried basil",
+        "1 teaspoon dried oregano",
+        "0.5 teaspoon salt",
+        "0.25 teaspoon black pepper"
+      ],
+      "instructions": [
+        "Heat olive oil in a large saucepan over medium heat.",
+        "Add garlic and cook for 1 minute until fragrant.",
+        "Stir in diced tomatoes, basil, oregano, salt, and pepper.",
+        "Bring to a simmer.",
+        "Reduce heat and simmer for 30 minutes, stirring occasionally."
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "id": "GR-001",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "These cookies are great! I added a teaspoon of cinnamon to the dough and it gave them such a warm flavor. Will make again.",
+      "rating": 5,
+      "categories": ["addition"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "0.5 teaspoon salt", "add": "1 teaspoon ground cinnamon"}
+      ]
+    },
+    {
+      "id": "GR-002",
+      "recipe": "banana_bread",
+      "review_text": "Tossed in a half cup of chopped pecans for crunch. Highly recommend!",
+      "rating": 5,
+      "categories": ["addition"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "1 teaspoon vanilla extract", "add": "0.5 cup chopped pecans"}
+      ]
+    },
+    {
+      "id": "GR-003",
+      "recipe": "chili",
+      "review_text": "Added a chopped chipotle pepper in adobo for some smokiness. Perfect heat level.",
+      "rating": 5,
+      "categories": ["addition"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "1 teaspoon salt", "add": "1 chipotle pepper in adobo, chopped"}
+      ]
+    },
+    {
+      "id": "GR-004",
+      "recipe": "pancakes",
+      "review_text": "I always add a dash of nutmeg to my pancakes. Made them so much better.",
+      "rating": 4,
+      "categories": ["addition"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "1 teaspoon vanilla extract", "add": "0.25 teaspoon ground nutmeg"}
+      ]
+    },
+    {
+      "id": "GR-005",
+      "recipe": "mac_and_cheese",
+      "review_text": "Topped it with buttered panko breadcrumbs before baking. Crunchy top, gooey inside, dream texture.",
+      "rating": 5,
+      "categories": ["addition"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "instructions", "operation": "add_after", "find": "Combine sauce with macaroni; transfer to a baking dish.", "add": "Top with 1 cup buttered panko breadcrumbs before baking."}
+      ]
+    },
+    {
+      "id": "GR-006",
+      "recipe": "roast_chicken",
+      "review_text": "Stuffed a halved lemon in the cavity along with the garlic. Juicy and lemony, the meat practically falls off the bone.",
+      "rating": 5,
+      "categories": ["addition"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "3 cloves garlic, minced", "add": "1 lemon, halved"}
+      ]
+    },
+    {
+      "id": "GR-007",
+      "recipe": "apple_cake",
+      "review_text": "Added a cup of raisins, they plump up nicely while baking and add little bursts of sweetness.",
+      "rating": 5,
+      "categories": ["addition"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "3 large apples, peeled and diced", "add": "1 cup raisins"}
+      ]
+    },
+    {
+      "id": "GR-008",
+      "recipe": "marinara_sauce",
+      "review_text": "Tossed in a half teaspoon of red pepper flakes for a little heat. Just right.",
+      "rating": 5,
+      "categories": ["addition"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "0.25 teaspoon black pepper", "add": "0.5 teaspoon red pepper flakes"}
+      ]
+    },
+    {
+      "id": "GR-009",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Skipped the walnuts because my kids hate nuts. Cookies were still amazing.",
+      "rating": 5,
+      "categories": ["removal"],
+      "expected_edits": [
+        {"modification_type": "removal", "target": "ingredients", "operation": "remove", "find": "1 cup chopped walnuts"}
+      ]
+    },
+    {
+      "id": "GR-010",
+      "recipe": "banana_bread",
+      "review_text": "Left out the salt, honestly didn't notice a difference.",
+      "rating": 4,
+      "categories": ["removal"],
+      "expected_edits": [
+        {"modification_type": "removal", "target": "ingredients", "operation": "remove", "find": "0.25 teaspoon salt"}
+      ]
+    },
+    {
+      "id": "GR-011",
+      "recipe": "chili",
+      "review_text": "No kidney beans for me, I prefer just the black beans. Still hearty.",
+      "rating": 4,
+      "categories": ["removal"],
+      "expected_edits": [
+        {"modification_type": "removal", "target": "ingredients", "operation": "remove", "find": "1 (15 ounce) can kidney beans, drained"}
+      ]
+    },
+    {
+      "id": "GR-012",
+      "recipe": "pancakes",
+      "review_text": "Didn't have vanilla on hand so I just omitted it. Still delicious.",
+      "rating": 4,
+      "categories": ["removal"],
+      "expected_edits": [
+        {"modification_type": "removal", "target": "ingredients", "operation": "remove", "find": "1 teaspoon vanilla extract"}
+      ]
+    },
+    {
+      "id": "GR-013",
+      "recipe": "mac_and_cheese",
+      "review_text": "Skipped the Dijon mustard, my husband doesn't like it. Just as good without.",
+      "rating": 5,
+      "categories": ["removal"],
+      "expected_edits": [
+        {"modification_type": "removal", "target": "ingredients", "operation": "remove", "find": "1 teaspoon Dijon mustard"}
+      ]
+    },
+    {
+      "id": "GR-014",
+      "recipe": "roast_chicken",
+      "review_text": "Don't like thyme so I left it out. Garlic carried plenty of flavor on its own.",
+      "rating": 4,
+      "categories": ["removal"],
+      "expected_edits": [
+        {"modification_type": "removal", "target": "ingredients", "operation": "remove", "find": "1 teaspoon dried thyme"}
+      ]
+    },
+    {
+      "id": "GR-015",
+      "recipe": "apple_cake",
+      "review_text": "I omitted the vanilla extract, didn't feel needed with all that cinnamon.",
+      "rating": 5,
+      "categories": ["removal"],
+      "expected_edits": [
+        {"modification_type": "removal", "target": "ingredients", "operation": "remove", "find": "1 teaspoon vanilla extract"}
+      ]
+    },
+    {
+      "id": "GR-016",
+      "recipe": "marinara_sauce",
+      "review_text": "My partner is allergic to garlic so I left it out entirely. Still tasty with the herbs.",
+      "rating": 4,
+      "categories": ["removal"],
+      "expected_edits": [
+        {"modification_type": "removal", "target": "ingredients", "operation": "remove", "find": "4 cloves garlic, minced"}
+      ]
+    },
+    {
+      "id": "GR-017",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Swapped butter for coconut oil to make these dairy-free. Came out great, slightly different chew but excellent.",
+      "rating": 5,
+      "categories": ["ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "1 cup butter, softened", "replace": "1 cup coconut oil"}
+      ]
+    },
+    {
+      "id": "GR-018",
+      "recipe": "banana_bread",
+      "review_text": "Used almond flour instead of all-purpose to make it gluten-free.",
+      "rating": 4,
+      "categories": ["ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "2 cups all-purpose flour", "replace": "2 cups almond flour"}
+      ]
+    },
+    {
+      "id": "GR-019",
+      "recipe": "chili",
+      "review_text": "Subbed ground turkey for the beef to lighten it up. My family didn't even notice.",
+      "rating": 5,
+      "categories": ["ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "2 pounds ground beef", "replace": "2 pounds ground turkey"}
+      ]
+    },
+    {
+      "id": "GR-020",
+      "recipe": "pancakes",
+      "review_text": "Used oat milk instead of regular milk, worked beautifully and stayed fluffy.",
+      "rating": 5,
+      "categories": ["ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "1.25 cups milk", "replace": "1.25 cups oat milk"}
+      ]
+    },
+    {
+      "id": "GR-021",
+      "recipe": "mac_and_cheese",
+      "review_text": "Swapped the sharp cheddar for gruyere. So much more flavor, will never go back.",
+      "rating": 5,
+      "categories": ["ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "3 cups shredded sharp cheddar cheese", "replace": "3 cups shredded gruyere cheese"}
+      ]
+    },
+    {
+      "id": "GR-022",
+      "recipe": "roast_chicken",
+      "review_text": "Rubbed with olive oil instead of butter for a crispier skin. Perfect golden brown.",
+      "rating": 5,
+      "categories": ["ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "2 tablespoons butter, softened", "replace": "2 tablespoons olive oil"}
+      ]
+    },
+    {
+      "id": "GR-023",
+      "recipe": "apple_cake",
+      "review_text": "Used pears instead of apples since that's what I had on hand. Lovely flavor.",
+      "rating": 4,
+      "categories": ["ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "3 large apples, peeled and diced", "replace": "3 large pears, peeled and diced"}
+      ]
+    },
+    {
+      "id": "GR-024",
+      "recipe": "marinara_sauce",
+      "review_text": "Used crushed tomatoes instead of diced for a smoother sauce. Much better texture.",
+      "rating": 5,
+      "categories": ["ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "1 (28 ounce) can diced tomatoes", "replace": "1 (28 ounce) can crushed tomatoes"}
+      ]
+    },
+    {
+      "id": "GR-025",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Used a full teaspoon of salt instead of a half. Way better flavor balance.",
+      "rating": 5,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "0.5 teaspoon salt", "replace": "1 teaspoon salt"}
+      ]
+    },
+    {
+      "id": "GR-026",
+      "recipe": "banana_bread",
+      "review_text": "Doubled the brown sugar because we like it sweeter.",
+      "rating": 4,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "0.75 cup brown sugar", "replace": "1.5 cups brown sugar"}
+      ]
+    },
+    {
+      "id": "GR-027",
+      "recipe": "chili",
+      "review_text": "Halved the chili powder, the original was too spicy for my husband.",
+      "rating": 4,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "2 tablespoons chili powder", "replace": "1 tablespoon chili powder"}
+      ]
+    },
+    {
+      "id": "GR-028",
+      "recipe": "pancakes",
+      "review_text": "Used 1.5 cups of milk for a thinner, crepe-like batter. Lovely.",
+      "rating": 4,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "1.25 cups milk", "replace": "1.5 cups milk"}
+      ]
+    },
+    {
+      "id": "GR-029",
+      "recipe": "mac_and_cheese",
+      "review_text": "Cut the butter in half, it really doesn't need a full half cup. Still creamy.",
+      "rating": 5,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "0.5 cup butter", "replace": "0.25 cup butter"}
+      ]
+    },
+    {
+      "id": "GR-030",
+      "recipe": "roast_chicken",
+      "review_text": "Doubled the garlic, six cloves all the way.",
+      "rating": 5,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "3 cloves garlic, minced", "replace": "6 cloves garlic, minced"}
+      ]
+    },
+    {
+      "id": "GR-031",
+      "recipe": "apple_cake",
+      "review_text": "Used 1 cup of sugar instead of 2. Plenty sweet from the apples.",
+      "rating": 5,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "2 cups white sugar", "replace": "1 cup white sugar"}
+      ]
+    },
+    {
+      "id": "GR-032",
+      "recipe": "marinara_sauce",
+      "review_text": "Tripled the basil, fresh herbs really make this sauce sing.",
+      "rating": 5,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "1 teaspoon dried basil", "replace": "3 teaspoons dried basil"}
+      ]
+    },
+    {
+      "id": "GR-033",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Baked for 8 minutes instead of 10. Edges crispy, centers soft and chewy. Perfection.",
+      "rating": 5,
+      "categories": ["technique_change"],
+      "expected_edits": [
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "about 10 minutes", "replace": "about 8 minutes"}
+      ]
+    },
+    {
+      "id": "GR-034",
+      "recipe": "banana_bread",
+      "review_text": "Baked an extra 15 minutes, mine wasn't done at 65. Toothpick rule!",
+      "rating": 4,
+      "categories": ["technique_change"],
+      "expected_edits": [
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "60 to 65 minutes", "replace": "75 to 80 minutes"}
+      ]
+    },
+    {
+      "id": "GR-035",
+      "recipe": "chili",
+      "review_text": "Simmered uncovered for 3 hours instead of 1. Way more depth of flavor, worth the wait.",
+      "rating": 5,
+      "categories": ["technique_change"],
+      "expected_edits": [
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "simmer uncovered for 1 hour", "replace": "simmer uncovered for 3 hours"}
+      ]
+    },
+    {
+      "id": "GR-036",
+      "recipe": "roast_chicken",
+      "review_text": "Roasted for 1 hour and 30 minutes instead of 1:15. My bird was a bit bigger and needed the extra time.",
+      "rating": 5,
+      "categories": ["technique_change"],
+      "expected_edits": [
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "1 hour and 15 minutes", "replace": "1 hour and 30 minutes"}
+      ]
+    },
+    {
+      "id": "GR-037",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Baked at 375 instead of 350. Crispier edges, just how we like them.",
+      "rating": 5,
+      "categories": ["technique_change"],
+      "expected_edits": [
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "350 degrees F (175 degrees C)", "replace": "375 degrees F (190 degrees C)"}
+      ]
+    },
+    {
+      "id": "GR-038",
+      "recipe": "banana_bread",
+      "review_text": "Lowered the oven to 325 for a moister loaf. Game changer, never going back.",
+      "rating": 5,
+      "categories": ["technique_change"],
+      "expected_edits": [
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "350 degrees F (175 degrees C)", "replace": "325 degrees F (165 degrees C)"}
+      ]
+    },
+    {
+      "id": "GR-039",
+      "recipe": "mac_and_cheese",
+      "review_text": "Baked at 400 instead of 350 for a browner, crispier top. Loved it.",
+      "rating": 5,
+      "categories": ["technique_change"],
+      "expected_edits": [
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "Preheat oven to 350 degrees F.", "replace": "Preheat oven to 400 degrees F."}
+      ]
+    },
+    {
+      "id": "GR-040",
+      "recipe": "roast_chicken",
+      "review_text": "Roasted at 425 instead of 375. Crispier skin, juicier inside.",
+      "rating": 5,
+      "categories": ["technique_change"],
+      "expected_edits": [
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "375 degrees F (190 degrees C)", "replace": "425 degrees F (220 degrees C)"}
+      ]
+    },
+    {
+      "id": "GR-041",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Halved the white sugar and used 1.5 cups of brown sugar instead. So much chewier and more flavorful.",
+      "rating": 5,
+      "categories": ["quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "1 cup white sugar", "replace": "0.5 cup white sugar"},
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "1 cup packed brown sugar", "replace": "1.5 cups packed brown sugar"}
+      ]
+    },
+    {
+      "id": "GR-042",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Added an extra egg yolk for chewiness AND used 3 cups of chocolate chips instead of 2. Best cookies ever.",
+      "rating": 5,
+      "categories": ["addition", "quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "2 eggs", "add": "1 additional egg yolk"},
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "2 cups semisweet chocolate chips", "replace": "3 cups semisweet chocolate chips"}
+      ]
+    },
+    {
+      "id": "GR-043",
+      "recipe": "banana_bread",
+      "review_text": "Used 3 cups of mashed bananas, added a half cup of chopped walnuts, and cut the brown sugar to 0.5 cup. Best banana bread I've made.",
+      "rating": 5,
+      "categories": ["quantity_adjustment", "addition"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "2.33 cups mashed overripe bananas", "replace": "3 cups mashed overripe bananas"},
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "1 teaspoon vanilla extract", "add": "0.5 cup chopped walnuts"},
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "0.75 cup brown sugar", "replace": "0.5 cup brown sugar"}
+      ]
+    },
+    {
+      "id": "GR-044",
+      "recipe": "chili",
+      "review_text": "Swapped the beef for ground turkey and added a can of corn. Big hit with the kids.",
+      "rating": 5,
+      "categories": ["ingredient_substitution", "addition"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "2 pounds ground beef", "replace": "2 pounds ground turkey"},
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "1 (15 ounce) can black beans, drained", "add": "1 (15 ounce) can corn, drained"}
+      ]
+    },
+    {
+      "id": "GR-045",
+      "recipe": "pancakes",
+      "review_text": "Used buttermilk instead of regular milk and added an extra tablespoon of melted butter. So fluffy and rich.",
+      "rating": 5,
+      "categories": ["ingredient_substitution", "quantity_adjustment"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "1.25 cups milk", "replace": "1.25 cups buttermilk"},
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "3 tablespoons melted butter", "replace": "4 tablespoons melted butter"}
+      ]
+    },
+    {
+      "id": "GR-046",
+      "recipe": "mac_and_cheese",
+      "review_text": "Doubled the cheese, swapped cheddar for gruyere, and topped with panko before baking. Unreal.",
+      "rating": 5,
+      "categories": ["quantity_adjustment", "ingredient_substitution", "addition"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "3 cups shredded sharp cheddar cheese", "replace": "3 cups shredded gruyere cheese"},
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "3 cups shredded sharp cheddar cheese", "replace": "6 cups shredded sharp cheddar cheese"},
+        {"modification_type": "addition", "target": "instructions", "operation": "add_after", "find": "Combine sauce with macaroni; transfer to a baking dish.", "add": "Top with 1 cup panko breadcrumbs before baking."}
+      ]
+    },
+    {
+      "id": "GR-047",
+      "recipe": "roast_chicken",
+      "review_text": "Stuffed the cavity with a halved lemon and a few sprigs of fresh rosemary, brushed with olive oil instead of butter, and roasted at 425 instead of 375. Best roast chicken I've made.",
+      "rating": 5,
+      "categories": ["addition", "ingredient_substitution", "technique_change"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "3 cloves garlic, minced", "add": "1 lemon, halved"},
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "3 cloves garlic, minced", "add": "2 sprigs fresh rosemary"},
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "2 tablespoons butter, softened", "replace": "2 tablespoons olive oil"},
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "375 degrees F (190 degrees C)", "replace": "425 degrees F (220 degrees C)"}
+      ]
+    },
+    {
+      "id": "GR-048",
+      "recipe": "apple_cake",
+      "review_text": "Halved the sugar, doubled the cinnamon, baked at 325 for an extra 15 minutes. Best apple cake we've ever had.",
+      "rating": 5,
+      "categories": ["quantity_adjustment", "technique_change"],
+      "expected_edits": [
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "2 cups white sugar", "replace": "1 cup white sugar"},
+        {"modification_type": "quantity_adjustment", "target": "ingredients", "operation": "replace", "find": "1 teaspoon ground cinnamon", "replace": "2 teaspoons ground cinnamon"},
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "350 degrees F (175 degrees C)", "replace": "325 degrees F (165 degrees C)"},
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "Bake for 45 minutes.", "replace": "Bake for 60 minutes."}
+      ]
+    },
+    {
+      "id": "GR-049",
+      "recipe": "marinara_sauce",
+      "review_text": "Used fresh basil instead of dried, added a teaspoon of sugar to balance acidity, and simmered for 2 hours instead of 30 minutes. Tastes like nonna made it.",
+      "rating": 5,
+      "categories": ["ingredient_substitution", "addition", "technique_change"],
+      "expected_edits": [
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "1 teaspoon dried basil", "replace": "0.25 cup fresh basil, chopped"},
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "0.25 teaspoon black pepper", "add": "1 teaspoon sugar"},
+        {"modification_type": "technique_change", "target": "instructions", "operation": "replace", "find": "simmer for 30 minutes", "replace": "simmer for 2 hours"}
+      ]
+    },
+    {
+      "id": "GR-050",
+      "recipe": "chocolate_chip_cookies",
+      "review_text": "Added an extra egg yolk for chewiness, replaced the white sugar with another cup of brown sugar (so 2 cups brown total), and used half chocolate chips and half chocolate chunks. Insanely good.",
+      "rating": 5,
+      "categories": ["addition", "ingredient_substitution"],
+      "expected_edits": [
+        {"modification_type": "addition", "target": "ingredients", "operation": "add_after", "find": "2 eggs", "add": "1 additional egg yolk"},
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "1 cup white sugar", "replace": "1 cup packed brown sugar"},
+        {"modification_type": "ingredient_substitution", "target": "ingredients", "operation": "replace", "find": "2 cups semisweet chocolate chips", "replace": "1 cup semisweet chocolate chips and 1 cup semisweet chocolate chunks"}
+      ]
+    }
+  ]
+}
